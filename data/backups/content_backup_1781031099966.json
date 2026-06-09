@@ -1,0 +1,716 @@
+{
+  "meta": {
+    "title": {
+      "az": "Həbib | IT Biznes Analitik",
+      "en": "Khabib | IT Business Analyst",
+      "tr": "Həbib | BT İş Analisti"
+    },
+    "description": {
+      "az": "Həbib Şahverdiyev - İT Biznes Analitik | ERP, biznes analitika, kibertəhlükəsizlik üzrə peşəkar.",
+      "en": "Khabib Shahverdiyev - IT Business Analyst | ERP, business analytics, cybersecurity professional.",
+      "tr": "Həbib Şahverdiyev - BT İş Analisti | ERP, iş analitiği, siber güvenlik."
+    },
+    "keywords": "IT Business Analyst, ERP, SQL, Cybersecurity, Azerbaijan, Portfolio"
+  },
+  "settings": {
+    "logo": "H/S",
+    "cvFile": "Həbib - İT Biznes Analitik.pdf",
+    "openToWork": false,
+    "profileImage": "",
+    "contactEmail": "khabibshv@gmail.com",
+    "footerName": "Həbib Şahverdiyev"
+  },
+  "stats": [],
+  "social": [],
+  "nav": [
+    {
+      "id": "nav-hero",
+      "sectionId": "hero",
+      "order": 0,
+      "visible": true,
+      "label": {
+        "az": "Ana Səhifə",
+        "en": "Home",
+        "tr": "Ana Sayfa"
+      }
+    },
+    {
+      "id": "nav-exp",
+      "sectionId": "experience",
+      "order": 1,
+      "visible": true,
+      "label": {
+        "az": "Təcrübə",
+        "en": "Experience",
+        "tr": "Deneyim"
+      }
+    },
+    {
+      "id": "nav-edu",
+      "sectionId": "education",
+      "order": 2,
+      "visible": true,
+      "label": {
+        "az": "Təhsil",
+        "en": "Education",
+        "tr": "Eğitim"
+      }
+    },
+    {
+      "id": "nav-proj",
+      "sectionId": "projects",
+      "order": 3,
+      "visible": true,
+      "label": {
+        "az": "Layihələr",
+        "en": "Projects",
+        "tr": "Projeler"
+      }
+    },
+    {
+      "id": "nav-skills",
+      "sectionId": "skills",
+      "order": 4,
+      "visible": true,
+      "label": {
+        "az": "Bacarıqlar",
+        "en": "Skills",
+        "tr": "Yetenekler"
+      }
+    },
+    {
+      "id": "nav-cert",
+      "sectionId": "certificates",
+      "order": 5,
+      "visible": true,
+      "label": {
+        "az": "Sertifikatlar",
+        "en": "Certificates",
+        "tr": "Sertifikalar"
+      }
+    },
+    {
+      "id": "nav-contact",
+      "sectionId": "contact",
+      "order": 6,
+      "visible": true,
+      "label": {
+        "az": "Əlaqə",
+        "en": "Contact",
+        "tr": "İletişim"
+      }
+    }
+  ],
+  "ui": {
+    "az": {
+      "back-to-top": "Yuxarı qalx",
+      "download-cv": "CV Yüklə",
+      "hire-me": "LinkedIn",
+      "send": "Göndər",
+      "more": "Daha çox",
+      "present": "Bu gün",
+      "all-skills": "Bütün Bacarıqlar",
+      "placeholder-name": "Adınız",
+      "placeholder-email": "Email",
+      "placeholder-message": "Mesajınız",
+      "experience-title": "Peşəkar Təcrübə",
+      "education-title": "Təhsil",
+      "projects-title": "Layihələr",
+      "skills-title": "Bacarıqlar",
+      "certificates-title": "Sertifikatlar",
+      "contact-title": "Əlaqə"
+    },
+    "en": {
+      "back-to-top": "Back to top",
+      "download-cv": "Download CV",
+      "hire-me": "LinkedIn",
+      "send": "Send",
+      "more": "More",
+      "present": "Present",
+      "all-skills": "All Skills",
+      "placeholder-name": "Your Name",
+      "placeholder-email": "Email",
+      "placeholder-message": "Your Message",
+      "experience-title": "Professional Experience",
+      "education-title": "Education",
+      "projects-title": "Projects",
+      "skills-title": "Skills",
+      "certificates-title": "Certificates",
+      "contact-title": "Contact"
+    },
+    "tr": {
+      "back-to-top": "Yukarı çık",
+      "download-cv": "CV İndir",
+      "hire-me": "LinkedIn",
+      "send": "Gönder",
+      "more": "Daha fazla",
+      "present": "Bu gün",
+      "all-skills": "Tüm Yetenekler",
+      "placeholder-name": "Adınız",
+      "placeholder-email": "E-posta",
+      "placeholder-message": "Mesajınız",
+      "experience-title": "Profesyonel Deneyim",
+      "education-title": "Eğitim",
+      "projects-title": "Projeler",
+      "skills-title": "Yetenekler",
+      "certificates-title": "Sertifikalar",
+      "contact-title": "İletişim"
+    }
+  },
+  "hero": {
+    "enabled": true,
+    "name": {
+      "az": "Həbib Şahverdiyev",
+      "en": "Khabib Shahverdiyev",
+      "tr": "Həbib Şahverdiyev"
+    },
+    "title": {
+      "az": "İT Biznes Analitik",
+      "en": "IT Business Analyst",
+      "tr": "BT İş Analisti"
+    },
+    "intro": {
+      "az": "İT Biznes Analitik | ERP Sistemləri ",
+      "en": "IT Business Analyst | ERP Systems ",
+      "tr": "BT İş Analisti | ERP Sistemleri "
+    }
+  },
+  "experience": [
+    {
+      "id": "prosys",
+      "order": 0,
+      "visible": true,
+      "side": "left",
+      "icon": "fa-solid fa-building",
+      "period": "09.2025 – present",
+      "tags": "erp, hr, biznes",
+      "title": {
+        "az": "PROSYS MMC",
+        "en": "PROSYS LLC",
+        "tr": "PROSYS MMC"
+      },
+      "shortDesc": {
+        "az": "Kiçik İT Biznes Analitik",
+        "en": "Junior IT Business Analyst",
+        "tr": "Genç BT İş Analisti"
+      },
+      "modalTitle": {
+        "az": "PROSYS MMC",
+        "en": "PROSYS LLC",
+        "tr": "PROSYS MMC"
+      },
+      "modalDesc": {
+        "az": "İT Biznes Analitik – HRMpro layihəsində insan resurslarının idarə olunması və əməkhaqqı modullarına dair biznes tələblərin toplanması və funksional sənədlərin hazırlanması.",
+        "en": "IT Business Analyst – In the HRMpro project, business requirements for HR and payroll modules were gathered and functional documents prepared.",
+        "tr": "BT İş Analisti – HRMpro projesinde İK ve bordro modülleri için iş gereksinimleri toplandı."
+      },
+      "modalImg": "https://via.placeholder.com/600x300?text=PROSYS",
+      "modalLink": "https://www.prosys.az/"
+    },
+    {
+      "id": "mazarina",
+      "order": 1,
+      "visible": true,
+      "side": "right",
+      "icon": "fa-solid fa-industry",
+      "period": "10.2024 – 09.2025",
+      "tags": "erp, test",
+      "title": {
+        "az": "Mazarina Trade Company LLC",
+        "en": "Mazarina Trade Company LLC",
+        "tr": "Mazarina Trade Company MMC"
+      },
+      "shortDesc": {
+        "az": "ERP & Biznes Analitik",
+        "en": "ERP & Business Analyst",
+        "tr": "ERP & İş Analisti"
+      },
+      "modalTitle": {
+        "az": "Mazarina Trade Company LLC",
+        "en": "Mazarina Trade Company LLC",
+        "tr": "Mazarina Trade Company MMC"
+      },
+      "modalDesc": {
+        "az": "ERP & Biznes Analitik – LOGO Tiger 3 ERP sistemi tətbiq edilmiş, istifadəçi idarəetməsi və verilənlər bazası dəstəyi.",
+        "en": "ERP & Business Analyst – LOGO Tiger 3 ERP implementation, user management and database support.",
+        "tr": "ERP & İş Analisti – LOGO Tiger 3 ERP uygulaması ve veritabanı desteği."
+      },
+      "modalImg": "https://via.placeholder.com/600x300?text=Mazarina",
+      "modalLink": "https://mazarina.az/"
+    },
+    {
+      "id": "azedunet",
+      "order": 2,
+      "visible": true,
+      "side": "left",
+      "icon": "fa-solid fa-network-wired",
+      "period": "06.2024 – 09.2024",
+      "tags": "network, vlan",
+      "title": {
+        "az": "AzEduNet LLC",
+        "en": "AzEduNet LLC",
+        "tr": "AzEduNet MMC"
+      },
+      "shortDesc": {
+        "az": "İKT Mütəxəssis",
+        "en": "IT Specialist",
+        "tr": "BT Uzmanı"
+      },
+      "modalTitle": {
+        "az": "AzEduNet LLC",
+        "en": "AzEduNet LLC",
+        "tr": "AzEduNet MMC"
+      },
+      "modalDesc": {
+        "az": "İKT Mütəxəssisi – STP və VLAN konfiqurasiyası ilə şəbəkə problemlərinin həlli.",
+        "en": "ICT Specialist – Resolved network issues with STP and VLAN configuration.",
+        "tr": "BT Uzmanı – STP ve VLAN ile ağ sorunları giderildi."
+      },
+      "modalImg": "https://via.placeholder.com/600x300?text=AzEduNet",
+      "modalLink": "https://azedunet.az/az/"
+    }
+  ],
+  "education": [
+    {
+      "id": "sabah",
+      "order": 1,
+      "visible": true,
+      "icon": "fa-solid fa-user-graduate",
+      "period": "2024 – 2026",
+      "tags": "cybersecurity, magistr",
+      "title": {
+        "az": "Azərbaycan Texniki Universiteti (SABAH)",
+        "en": "Azerbaijan Technical University (SABAH)",
+        "tr": "Azerbaycan Teknik Üniversitesi (SABAH)"
+      },
+      "shortDesc": {
+        "az": "Magistr – Kibertəhlükəsizlik",
+        "en": "Master – Cybersecurity",
+        "tr": "Yüksek Lisans – Siber Güvenlik"
+      },
+      "modalTitle": {
+        "az": "Azərbaycan Texniki Universiteti (SABAH)",
+        "en": "Azerbaijan Technical University (SABAH)",
+        "tr": "Azerbaycan Teknik Üniversitesi (SABAH)"
+      },
+      "modalDesc": {
+        "az": "Magistr – Kibertəhlükəsizlik üzrə təhsil alıram (2024 – indiyə kimi). Şəbəkə və məlumat təhlükəsizliyi sahəsində praktiki biliklər qazandım. Fərdi və qrup layihələrində real problemlərə həllər hazırladım. Test və analiz işlərini müxtəlif alətlərlə apardım.",
+        "en": "Master's – Studying Cybersecurity (2024 – present) at Azerbaijan Technical University. Gained practical knowledge in network and information security. Developed solutions for real problems in individual and group projects. Conducted testing and analysis using various tools.",
+        "tr": "Yüksek Lisans – Azerbaycan Teknik Üniversitesinde Siber Güvenlik eğitimi alıyorum (2024 – günümüze). Ağ ve bilgi güvenliği alanında pratik bilgiler edindim. Bireysel ve grup projelerinde gerçek sorunlara çözümler geliştirdim. Test ve analizleri çeşitli araçlarla gerçekleştirdim."
+      },
+      "modalImg": "https://via.placeholder.com/600x300?text=AzTU+SABAH",
+      "modalLink": "https://aztu.edu.az/az"
+    },
+    {
+      "id": "wsb",
+      "order": 0,
+      "visible": true,
+      "icon": "fa-solid fa-user-doctor",
+      "period": {
+        "az": "2026 – Bu gün",
+        "en": "2026 – Present",
+        "tr": "2026 – Günümüz"
+      },
+      "tags": "cybersecurity, phd, doctoral",
+      "title": {
+        "az": "WSB Universiteti",
+        "en": "WSB University",
+        "tr": "WSB Üniversitesi"
+      },
+      "shortDesc": {
+        "az": "Doktorantura – Kompüter və İnformasiya Sistemləri Təhlükəsizliyi",
+        "en": "PhD – Computer and Information Systems Security",
+        "tr": "Doktora – Bilgisayar ve Bilgi Sistemleri Güvenliği"
+      },
+      "modalTitle": {
+        "az": "WSB Universiteti",
+        "en": "WSB University",
+        "tr": "WSB Üniversitesi"
+      },
+      "modalDesc": {
+        "az": "2026-cı ildən etibarən Kompüter və İnformasiya Sistemlərinin Təhlükəsizliyi ixtisası üzrə doktorantura təhsili alıram. Tədqiqat fəaliyyətim kibertəhlükəsizlik, informasiya sistemlərinin qorunması, risklərin idarə edilməsi və müasir təhlükəsizlik texnologiyalarının tətbiqi istiqamətlərini əhatə edir.",
+        "en": "Since 2026, I have been pursuing a PhD in Computer and Information Systems Security. My research focuses on cybersecurity, information systems protection, risk management, and the application of modern security technologies.",
+        "tr": "2026 yılından itibaren Bilgisayar ve Bilgi Sistemleri Güvenliği alanında doktora eğitimime devam ediyorum. Araştırmalarım siber güvenlik, bilgi sistemlerinin korunması, risk yönetimi ve modern güvenlik teknolojilerinin uygulanmasına odaklanmaktadır."
+      },
+      "modalImg": "https://via.placeholder.com/600x300?text=USB+University",
+      "modalLink": "https://wsb.edu.pl/en"
+    },
+    {
+      "id": "bdu",
+      "order": 2,
+      "visible": true,
+      "icon": "fa-solid fa-university",
+      "period": "2021 – 2024",
+      "tags": "bachelor, computer science",
+      "title": {
+        "az": "Bakı Dövlət Universiteti",
+        "en": "Baku State University",
+        "tr": "Bakü Devlet Üniversitesi"
+      },
+      "shortDesc": {
+        "az": "Bakalavr – Kompüter Elmləri",
+        "en": "Bachelor – Computer Science",
+        "tr": "Lisans – Bilgisayar Bilimleri"
+      },
+      "modalTitle": {
+        "az": "Bakı Dövlət Universiteti",
+        "en": "Baku State University",
+        "tr": "Bakü Devlet Üniversitesi"
+      },
+      "modalDesc": {
+        "az": "Bakalavr – Kompüter Elmləri (2021 – 2024). Proqramlaşdırma və proqram təminatı inkişafı sahəsində praktiki biliklər əldə etmişəm. Fərdi və qrup layihələrində real proqramlaşdırma problemlərini həll etmişəm. Müxtəlif alət və dillərlə layihələr hazırlamışam.",
+        "en": "Bachelor – Computer Science (2021 – 2024) at Baku State University. Gained practical knowledge in programming and software development. Solved real programming problems in individual and group projects. Developed projects using various tools and languages.",
+        "tr": "Lisans – Bilgisayar Bilimleri (2021 – 2024) Bakü Devlet Üniversitesi'nde. Programlama ve yazılım geliştirme alanında pratik bilgiler edindim. Bireysel ve grup projelerinde gerçek programlama sorunlarını çözdüm. Çeşitli araçlar ve dillerle projeler geliştirdim."
+      },
+      "modalImg": "https://via.placeholder.com/600x300?text=BDU",
+      "modalLink": "http://www.bdu.az/az"
+    },
+    {
+      "id": "ca",
+      "order": 3,
+      "visible": true,
+      "icon": "fa-solid fa-laptop-code",
+      "period": "2022 – 2023",
+      "tags": "academy, system",
+      "title": {
+        "az": "Code Academy",
+        "en": "Code Academy",
+        "tr": "Code Academy"
+      },
+      "shortDesc": {
+        "az": "System Administration",
+        "en": "System Administration",
+        "tr": "Sistem Yönetimi"
+      },
+      "modalTitle": {
+        "az": "Code Academy",
+        "en": "Code Academy",
+        "tr": "Code Academy"
+      },
+      "modalDesc": {
+        "az": "System Administration təhsili (2022 – 2023). Server və şəbəkə idarəçiliyi sahəsində praktiki biliklər qazandım. Fərdi və qrup layihələrində real sistem problemlərini həll etdim. Müxtəlif əməliyyat sistemləri və alətlərlə idarəetmə və monitorinq işləri apardım.",
+        "en": "Studied System Administration (2022 – 2023) at Code Academy. Gained practical knowledge in server and network management. Solved real system problems in individual and group projects. Conducted administration and monitoring tasks using various operating systems and tools.",
+        "tr": "Sistem Yönetimi eğitimi (2022 – 2023) Code Academy'de. Sunucu ve ağ yönetimi alanında pratik bilgiler edindim. Bireysel ve grup projelerinde gerçek sistem sorunlarını çözdüm. Çeşitli işletim sistemleri ve araçlarla yönetim ve izleme çalışmaları yaptım."
+      },
+      "modalImg": "https://via.placeholder.com/600x300?text=Code+Academy",
+      "modalLink": "https://code.edu.az/"
+    }
+  ],
+  "projects": [
+    {
+      "id": "hrmpro",
+      "order": 0,
+      "visible": true,
+      "icon": "fa-solid fa-people-group",
+      "tags": "hr, biznes",
+      "title": {
+        "az": "HRMpro",
+        "en": "HRMpro",
+        "tr": "HRMpro"
+      },
+      "shortDesc": {
+        "az": "HR modulları üçün biznes tələblər",
+        "en": "Business requirements for HR modules",
+        "tr": "İK modülleri için iş gereksinimleri"
+      },
+      "modalTitle": {
+        "az": "HRMpro",
+        "en": "HRMpro",
+        "tr": "HRMpro"
+      },
+      "modalDesc": {
+        "az": "HRM layihəsi işçilərin qeydiyyatı, əmək haqqı və performans izlənməsini sadələşdirir.",
+        "en": "HRM project simplifies employee registration, payroll and performance tracking.",
+        "tr": "HRM projesi çalışan kaydı, maaş ve performans takibini kolaylaştırır."
+      },
+      "modalImg": "https://via.placeholder.com/600x300?text=HRMpro",
+      "modalLink": "https://www.prosys.az/"
+    },
+    {
+      "id": "logo",
+      "order": 1,
+      "visible": true,
+      "icon": "fa-solid fa-database",
+      "tags": "erp, database",
+      "title": {
+        "az": "LOGO Tiger 3 ERP",
+        "en": "LOGO Tiger 3 ERP",
+        "tr": "LOGO Tiger 3 ERP"
+      },
+      "shortDesc": {
+        "az": "ERP tətbiqi və verilənlər bazası dəstəyi",
+        "en": "ERP application and database support",
+        "tr": "ERP uygulaması ve veritabanı desteği"
+      },
+      "modalTitle": {
+        "az": "LOGO Tiger 3 ERP",
+        "en": "LOGO Tiger 3 ERP",
+        "tr": "LOGO Tiger 3 ERP"
+      },
+      "modalDesc": {
+        "az": "Logo Tiger 3 ERP maliyyə, satış və anbar işlərini bir yerdə idarə edir.",
+        "en": "Logo Tiger 3 ERP manages finance, sales and warehouse operations together.",
+        "tr": "Logo Tiger 3 ERP finans, satış ve depo işlemlerini birlikte yönetir."
+      },
+      "modalImg": "https://via.placeholder.com/600x300?text=LOGO+ERP",
+      "modalLink": "https://www.logo.com.tr/en/product/logo-tiger-3-enterprise"
+    },
+    {
+      "id": "yandex",
+      "order": 2,
+      "visible": true,
+      "icon": "fa fa-user",
+      "tags": "erp, database",
+      "title": {
+        "az": "Admin Paneli",
+        "en": "Admin Panel",
+        "tr": "Admin Paneli"
+      },
+      "shortDesc": {
+        "az": "İstifadəçi və qrupların idarəsi",
+        "en": "User and group management",
+        "tr": "Kullanıcı ve grup yönetimi"
+      },
+      "modalTitle": {
+        "az": "İnkişaf etmiş Admin Paneli",
+        "en": "Advanced Admin Panel",
+        "tr": "Gelişmiş Admin Paneli"
+      },
+      "modalDesc": {
+        "az": "Admin Paneli istifadəçi və qrupların idarəsini asanlaşdırır. LocalStorage, CSV/JSON ixrac-import.",
+        "en": "Admin Panel simplifies user and group management with LocalStorage and CSV/JSON export.",
+        "tr": "Admin Paneli kullanıcı yönetimini LocalStorage ve CSV/JSON ile kolaylaştırır."
+      },
+      "modalImg": "https://via.placeholder.com/600x300.png/a59090/000000?Text=Admin",
+      "modalLink": "https://yandex.az/"
+    }
+  ],
+  "skills": {
+    "featuredCount": 2,
+    "items": [
+      {
+        "id": "skill-1",
+        "order": 7,
+        "visible": true,
+        "text": {
+          "az": "ERP (LOGO Tiger 3)",
+          "en": "ERP (LOGO Tiger 3)",
+          "tr": "ERP (LOGO Tiger 3)"
+        }
+      },
+      {
+        "id": "skill-2",
+        "order": 1,
+        "visible": true,
+        "text": {
+          "az": "SQL Fundamentals",
+          "en": "SQL Fundamentals",
+          "tr": "SQL Fundamentals"
+        }
+      },
+      {
+        "id": "skill-3",
+        "order": 2,
+        "visible": true,
+        "text": {
+          "az": "Windows Server / Ubuntu / RHEL",
+          "en": "Windows Server / Ubuntu / RHEL",
+          "tr": "Windows Server / Ubuntu / RHEL"
+        }
+      },
+      {
+        "id": "skill-4",
+        "order": 3,
+        "visible": true,
+        "text": {
+          "az": "Cybersecurity & Networking",
+          "en": "Cybersecurity & Networking",
+          "tr": "Siber Güvenlik & Ağ"
+        }
+      },
+      {
+        "id": "skill-5",
+        "order": 4,
+        "visible": true,
+        "text": {
+          "az": "Jira, ClickUP, TMSpro",
+          "en": "Jira, ClickUP, TMSpro",
+          "tr": "Jira, ClickUP, TMSpro"
+        }
+      },
+      {
+        "id": "skill-6",
+        "order": 5,
+        "visible": true,
+        "text": {
+          "az": "Active Directory, DHCP, DNS, GPO",
+          "en": "Active Directory, DHCP, DNS, GPO",
+          "tr": "Active Directory, DHCP, DNS, GPO"
+        }
+      },
+      {
+        "id": "skill-7",
+        "order": 6,
+        "visible": true,
+        "text": {
+          "az": "Docker, Virtualization",
+          "en": "Docker, Virtualization",
+          "tr": "Docker, Sanallaştırma"
+        }
+      },
+      {
+        "id": "skill-8",
+        "order": 1,
+        "visible": true,
+        "text": {
+          "az": "Business Process Modeling",
+          "en": "Business Process Modeling",
+          "tr": "İş Süreci Modelleme"
+        }
+      },
+      {
+        "id": "skill-9",
+        "order": 8,
+        "visible": true,
+        "text": {
+          "az": "Balsamiq Wireframes",
+          "en": "Balsamiq Wireframes",
+          "tr": "Balsamiq Wireframes"
+        }
+      },
+      {
+        "id": "skill-10",
+        "order": 9,
+        "visible": true,
+        "text": {
+          "az": "MS Azure",
+          "en": "MS Azure",
+          "tr": "MS Azure"
+        }
+      },
+      {
+        "id": "skill-11",
+        "order": 10,
+        "visible": true,
+        "text": {
+          "az": "Figma, Adobe XD",
+          "en": "Figma, Adobe XD",
+          "tr": "Figma, Adobe XD"
+        }
+      },
+      {
+        "id": "skill-12",
+        "order": 11,
+        "visible": true,
+        "text": {
+          "az": "Programming Basics",
+          "en": "Programming Basics",
+          "tr": "Programlama Temelleri"
+        }
+      },
+      {
+        "id": "skill-13",
+        "order": 12,
+        "visible": true,
+        "text": {
+          "az": "Agile, Scrum",
+          "en": "Agile, Scrum",
+          "tr": "Agile, Scrum"
+        }
+      }
+    ]
+  },
+  "certificates": [
+    {
+      "id": "cert1",
+      "order": 0,
+      "visible": true,
+      "featured": true,
+      "tags": "network",
+      "title": {
+        "az": "Şəbəkələr və Şəbəkə Təhlükəsizliyi",
+        "en": "Networks & Network Security",
+        "tr": "Ağlar ve Ağ Güvenliği"
+      },
+      "desc": {
+        "az": "Şəbəkələr və Şəbəkə Təhlükəsizliyi.",
+        "en": "Networks & Network Security.",
+        "tr": "Ağlar ve Ağ Güvenliği."
+      },
+      "img": "img/Network.jpeg"
+    },
+    {
+      "id": "cert4",
+      "order": 1,
+      "visible": true,
+      "featured": true,
+      "tags": "devops",
+      "title": {
+        "az": "DevOps-a giriş",
+        "en": "Introduction to DevOps",
+        "tr": "DevOps'a Giriş"
+      },
+      "desc": {
+        "az": "DevOps-a giriş.",
+        "en": "Introduction to DevOps.",
+        "tr": "DevOps'a giriş."
+      },
+      "img": "img/devops.jpeg"
+    },
+    {
+      "id": "cert3",
+      "order": 2,
+      "visible": true,
+      "featured": false,
+      "tags": "risk",
+      "title": {
+        "az": "Təhlükəsizlik risklərini idarə edin",
+        "en": "Manage Security Risks",
+        "tr": "Güvenlik Risklerini Yönet"
+      },
+      "desc": {
+        "az": "Təhlükəsizlik risklərini idarə edin.",
+        "en": "Manage security risks.",
+        "tr": "Güvenlik risklerini yönetin."
+      },
+      "img": "img/risk.jpeg"
+    },
+    {
+      "id": "cert2",
+      "order": 3,
+      "visible": true,
+      "featured": false,
+      "tags": "comptia",
+      "title": {
+        "az": "CompTIA A+",
+        "en": "CompTIA A+",
+        "tr": "CompTIA A+"
+      },
+      "desc": {
+        "az": "Sistem Administratorluğu üzrə CompTIA A+.",
+        "en": "CompTIA A+ in System Administration.",
+        "tr": "CompTIA A+ Sistem Yönetimi."
+      },
+      "img": "img/certificate.png"
+    },
+    {
+      "id": "cert5",
+      "order": 1,
+      "visible": true,
+      "featured": true,
+      "tags": "pack",
+      "title": {
+        "az": "Məhsul İdarəetməsi",
+        "en": "Product Management",
+        "tr": "Ürün Yönetimi"
+      },
+      "desc": {
+        "az": "Məhsul İdarəetməsi.",
+        "en": "Product Management.",
+        "tr": "Ürün Yönetimi."
+      },
+      "img": "img/pack.png"
+    }
+  ],
+  "customSections": []
+}

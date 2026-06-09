@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+        }
+        
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+        }
+        
+        .login-card {
+            background: rgba(20, 20, 40, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 28px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+        
+        .login-card h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .login-card input {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            color: #fff;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .login-card input:focus { outline: none; border-color: #00d4ff; }
+        
+        .login-card button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            border: none;
+            border-radius: 14px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .error-msg { color: #ff6b6b; text-align: center; margin-top: 15px; font-size: 14px; }
+        
+        .admin-panel { display: none; }
+        
+        .admin-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+            height: 65px;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .nav-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+        
+        .nav-tab {
+            padding: 8px 18px;
+            background: transparent;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 40px;
+            color: #ccc;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .nav-tab:hover, .nav-tab.active {
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            border-color: transparent;
+            color: white;
+        }
+        
+        .logout-btn {
+            background: rgba(255, 107, 157, 0.2);
+            border-color: rgba(255, 107, 157, 0.4);
+            color: #ff6b9d;
+        }
+        
+        .logout-btn:hover { background: #ff6b9d; color: white; }
+        
+        .main-content {
+            margin-top: 80px;
+            padding: 20px 24px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .section-header h2 { font-size: 24px; color: #00d4ff; }
+        
+        .add-btn {
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            border: none;
+            border-radius: 40px;
+            padding: 10px 24px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+        }
+        
+        .item-card {
+            background: rgba(20, 20, 35, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .item-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 212, 255, 0.4);
+        }
+        
+        .card-body { padding: 20px; }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #00d4ff;
+            margin-bottom: 8px;
+        }
+        
+        .card-meta {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 12px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .card-desc {
+            font-size: 13px;
+            color: #aaa;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        
+        .card-actions {
+            display: flex;
+            gap: 12px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .edit-btn, .delete-btn, .restore-btn, .hard-delete-btn {
+            padding: 8px 18px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .edit-btn { background: rgba(0, 212, 255, 0.15); color: #00d4ff; }
+        .edit-btn:hover { background: #00d4ff; color: white; }
+        
+        .delete-btn, .hard-delete-btn { background: rgba(255, 107, 157, 0.15); color: #ff6b9d; }
+        .delete-btn:hover, .hard-delete-btn:hover { background: #ff6b9d; color: white; }
+        
+        .restore-btn { background: rgba(0, 255, 136, 0.15); color: #00ff88; }
+        .restore-btn:hover { background: #00ff88; color: #0a0a0f; }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .skill-tag {
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 40px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+        
+        .skill-tag input {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 14px;
+            padding: 4px 0;
+            width: 180px;
+        }
+        
+        .skill-tag input:focus { outline: none; }
+        
+        .lang-box {
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+        
+        .lang-box h4 {
+            margin-bottom: 12px;
+            color: #00d4ff;
+            font-size: 14px;
+        }
+        
+        .form-group { margin-bottom: 20px; }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #bbb;
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px 14px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #00d4ff;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .modal-box {
+            background: rgba(15, 15, 30, 0.98);
+            border-radius: 28px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            max-width: 700px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 28px;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        
+        .modal-header h3 { font-size: 22px; color: #00d4ff; }
+        .close-modal { background: none; border: none; color: #aaa; font-size: 28px; cursor: pointer; }
+        
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .save-btn, .cancel-btn {
+            padding: 10px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .save-btn {
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            border: none;
+            color: white;
+        }
+        
+        .cancel-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #aaa;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(20, 20, 35, 0.5);
+            border-radius: 24px;
+            border: 1px dashed rgba(0, 212, 255, 0.2);
+        }
+        
+        .empty-state i {
+            font-size: 48px;
+            color: #00d4ff;
+            opacity: 0.5;
+            margin-bottom: 16px;
+        }
+        
+        .badge {
+            background: #ff6b9d;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 7px;
+            font-size: 11px;
+            margin-left: 8px;
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            z-index: 1100;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .cert-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+        
+        @media (max-width: 768px) {
+            .admin-header { padding: 0 16px; }
+            .nav-tabs { display: none; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .modal-box { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="loginPage" class="login-page">
+    <div class="login-card">
+        <h1><i class="fas fa-shield-alt"></i> Admin Panel</h1>
+        <input type="password" id="passwordInput" placeholder="Admin şifrəsi">
+        <button onclick="login()">Daxil ol</button>
+        <div id="loginError" class="error-msg"></div>
+    </div>
+</div>
+
+<div id="adminPanel" class="admin-panel">
+    <div class="admin-header">
+        <div class="logo"><i class="fas fa-cog"></i> Portfolio Admin</div>
+        <div class="nav-tabs" id="navTabs">
+            <button class="nav-tab active" data-section="experience"><i class="fas fa-briefcase"></i> Təcrübə</button>
+            <button class="nav-tab" data-section="education"><i class="fas fa-graduation-cap"></i> Təhsil</button>
+            <button class="nav-tab" data-section="projects"><i class="fas fa-project-diagram"></i> Layihələr</button>
+            <button class="nav-tab" data-section="skills"><i class="fas fa-code"></i> Bacarıqlar</button>
+            <button class="nav-tab" data-section="certificates"><i class="fas fa-certificate"></i> Sertifikatlar</button>
+            <button class="nav-tab" data-section="hero"><i class="fas fa-user"></i> Hero</button>
+            <button class="nav-tab" data-section="deleted"><i class="fas fa-trash-alt"></i> Silinmişlər <span id="deletedBadge" class="badge">0</span></button>
+        </div>
+        <button class="nav-tab logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Çıxış</button>
+    </div>
+
+    <div class="main-content" id="mainContent">
+        <div id="loader" style="text-align: center; padding: 60px;">
+            <i class="fas fa-spinner fa-spin" style="font-size: 40px; color: #00d4ff;"></i>
+            <p style="margin-top: 16px;">Yüklənir...</p>
+        </div>
+        <div id="sectionContent"></div>
+    </div>
+</div>
+
+<div id="itemModal" class="modal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3 id="modalTitle">Məlumat</h3>
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+        </div>
+        <div id="modalBody"></div>
+        <div class="modal-footer">
+            <button class="cancel-btn" onclick="closeModal()">Ləğv et</button>
+            <button class="save-btn" onclick="saveItem()">Yadda saxla</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let adminToken = localStorage.getItem('adminToken');
+    let currentSection = 'experience';
+    let contentData = null;
+    let editingId = null;
+    let currentEditSection = null;
+
+    async function apiRequest(endpoint, method, data = null) {
+        const options = { method, headers: { 'Content-Type': 'application/json' } };
+        if (adminToken) options.headers['Authorization'] = `Bearer ${adminToken}`;
+        if (data) options.body = JSON.stringify(data);
+        
+        const response = await fetch(endpoint, options);
+        if (response.status === 401) {
+            localStorage.removeItem('adminToken');
+            adminToken = null;
+            document.getElementById('loginPage').style.display = 'flex';
+            document.getElementById('adminPanel').style.display = 'none';
+            throw new Error('Unauthorized');
+        }
+        return await response.json();
+    }
+
+    async function login() {
+        const password = document.getElementById('passwordInput').value;
+        try {
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ password })
+            });
+            const data = await response.json();
+            if (data.success) {
+                adminToken = data.token;
+                localStorage.setItem('adminToken', adminToken);
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'block';
+                await loadContent();
+            } else {
+                document.getElementById('loginError').innerText = data.error || 'Şifrə yanlışdır!';
+            }
+        } catch(e) {
+            document.getElementById('loginError').innerText = 'Server xətası!';
+        }
+    }
+
+    function logout() {
+        localStorage.removeItem('adminToken');
+        adminToken = null;
+        document.getElementById('loginPage').style.display = 'flex';
+        document.getElementById('adminPanel').style.display = 'none';
+        showToast('Çıxış edildi');
+    }
+
+    async function loadContent() {
+        try {
+            const response = await fetch('/api/content');
+            contentData = await response.json();
+            document.getElementById('loader').style.display = 'none';
+            await loadDeletedCount();
+            renderCurrentSection();
+        } catch(e) {
+            document.getElementById('loader').innerHTML = '<div style="color:#ff6b9d;">Xəta!</div>';
+        }
+    }
+
+    async function loadDeletedCount() {
+        try {
+            const res = await apiRequest('/api/deleted-items', 'GET');
+            document.getElementById('deletedBadge').innerText = res.length || 0;
+        } catch(e) {}
+    }
+
+    function renderCurrentSection() {
+        if (!contentData) return;
+        const container = document.getElementById('sectionContent');
+        switch(currentSection) {
+            case 'experience': renderList(container, contentData.experience || [], 'experience', 'Təcrübə', 'period'); break;
+            case 'education': renderList(container, contentData.education || [], 'education', 'Təhsil', 'period'); break;
+            case 'projects': renderList(container, contentData.projects || [], 'projects', 'Layihələr', 'tags'); break;
+            case 'certificates': renderCertificates(container); break;
+            case 'skills': renderSkills(container); break;
+            case 'hero': renderHero(container); break;
+            case 'deleted': renderDeletedItems(container); break;
+        }
+    }
+
+    function renderList(container, items, section, title, metaField) {
+        container.innerHTML = `
+            <div class="section-header">
+                <h2>${title}</h2>
+                <button class="add-btn" onclick="openAddModal('${section}')"><i class="fas fa-plus"></i> Yeni əlavə et</button>
+            </div>
+            ${items.length === 0 ? '<div class="empty-state"><i class="fas fa-inbox"></i><p>Heç bir məlumat yoxdur</p></div>' : `
+                <div class="cards-grid">
+                    ${items.map(item => `
+                        <div class="item-card">
+                            <div class="card-body">
+                                <div class="card-title">${escapeHtml(item.title?.az || item.title || '—')}</div>
+                                <div class="card-meta"><span><i class="far fa-calendar-alt"></i> ${item[metaField] || '—'}</span></div>
+                                <div class="card-desc">${escapeHtml((item.shortDesc?.az || '').substring(0, 100))}</div>
+                                <div class="card-actions">
+                                    <button class="edit-btn" onclick="openEditModal('${section}', '${item.id}')"><i class="fas fa-edit"></i> Redaktə</button>
+                                    <button class="delete-btn" onclick="deleteItem('${section}', '${item.id}')"><i class="fas fa-trash"></i> Sil</button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `}
+        `;
+    }
+
+    function renderCertificates(container) {
+        const items = contentData.certificates || [];
+        container.innerHTML = `
+            <div class="section-header">
+                <h2>Sertifikatlar</h2>
+                <button class="add-btn" onclick="openAddModal('certificates')"><i class="fas fa-plus"></i> Yeni sertifikat</button>
+            </div>
+            ${items.length === 0 ? '<div class="empty-state"><i class="fas fa-inbox"></i><p>Heç bir sertifikat yoxdur</p></div>' : `
+                <div class="cards-grid">
+                    ${items.map(item => `
+                        <div class="item-card">
+                            <div class="card-body">
+                                ${item.img ? `<img src="${item.img}" class="cert-image" onerror="this.src='https://placehold.co/600x400?text=No+Image'">` : '<div style="width:100%; height:160px; background:rgba(0,212,255,0.1); border-radius:12px; margin-bottom:12px; display:flex; align-items:center; justify-content:center;"><i class="fas fa-image" style="font-size:40px; opacity:0.3;"></i></div>'}
+                                <div class="card-title">${escapeHtml(item.title?.az || item.title || '—')}</div>
+                                <div class="card-meta"><span><i class="fas fa-tag"></i> ${item.tags || '—'}</span></div>
+                                <div class="card-desc">${escapeHtml((item.desc?.az || '').substring(0, 80))}</div>
+                                <div class="card-actions">
+                                    <button class="edit-btn" onclick="openEditModal('certificates', '${item.id}')"><i class="fas fa-edit"></i> Redaktə</button>
+                                    <button class="delete-btn" onclick="deleteItem('certificates', '${item.id}')"><i class="fas fa-trash"></i> Sil</button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `}
+        `;
+    }
+
+    function renderSkills(container) {
+        const skills = contentData.skills?.items || [];
+        container.innerHTML = `
+            <div class="section-header">
+                <h2>Bacarıqlar</h2>
+                <button class="add-btn" onclick="addNewSkill()"><i class="fas fa-plus"></i> Yeni bacarıq</button>
+            </div>
+            <div class="skills-container">
+                ${skills.map(skill => `
+                    <div class="skill-tag">
+                        <input type="text" value="${escapeHtml(skill.text?.az || skill.text || '')}" 
+                               onblur="updateSkillText('${skill.id}', this.value)">
+                        <button onclick="deleteSkill('${skill.id}')" style="background:none; border:none; color:#ff6b9d; cursor:pointer;"><i class="fas fa-times"></i></button>
+                    </div>
+                `).join('')}
+            </div>
+            <div style="margin-top:24px; padding:20px; background:rgba(20,20,35,0.5); border-radius:16px;">
+                <label>Ana səhifədə göstərilən bacarıq sayı:</label>
+                <input type="number" id="featuredCountInput" value="${contentData.skills?.featuredCount || 6}" style="width:100px; margin-left:10px; padding:8px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:10px; color:white;">
+                <button class="save-btn" onclick="updateFeaturedCount()" style="margin-left:10px;">Yadda saxla</button>
+            </div>
+        `;
+    }
+
+    function renderHero(container) {
+        const hero = contentData.hero || {};
+        container.innerHTML = `
+            <div class="section-header"><h2>Hero Bölməsi</h2></div>
+            <div class="item-card"><div class="card-body">
+                <div class="lang-box"><h4>AZ - Azərbaycanca</h4>
+                    <div class="form-group"><label>Ad</label><input type="text" id="heroNameAz" value="${escapeHtml(hero.name?.az || '')}"></div>
+                    <div class="form-group"><label>Başlıq</label><input type="text" id="heroTitleAz" value="${escapeHtml(hero.title?.az || '')}"></div>
+                    <div class="form-group"><label>Giriş mətni</label><textarea id="heroIntroAz" rows="3">${escapeHtml(hero.intro?.az || '')}</textarea></div>
+                </div>
+                <div class="lang-box"><h4>EN - English</h4>
+                    <div class="form-group"><label>Name</label><input type="text" id="heroNameEn" value="${escapeHtml(hero.name?.en || '')}"></div>
+                    <div class="form-group"><label>Title</label><input type="text" id="heroTitleEn" value="${escapeHtml(hero.title?.en || '')}"></div>
+                    <div class="form-group"><label>Intro text</label><textarea id="heroIntroEn" rows="3">${escapeHtml(hero.intro?.en || '')}</textarea></div>
+                </div>
+                <div class="lang-box"><h4>TR - Türkçe</h4>
+                    <div class="form-group"><label>Ad</label><input type="text" id="heroNameTr" value="${escapeHtml(hero.name?.tr || '')}"></div>
+                    <div class="form-group"><label>Başlık</label><input type="text" id="heroTitleTr" value="${escapeHtml(hero.title?.tr || '')}"></div>
+                    <div class="form-group"><label>Giriş metni</label><textarea id="heroIntroTr" rows="3">${escapeHtml(hero.intro?.tr || '')}</textarea></div>
+                </div>
+                <button class="save-btn" onclick="saveHero()">Yadda saxla</button>
+            </div></div>
+        `;
+    }
+
+    async function renderDeletedItems(container) {
+        try {
+            const items = await apiRequest('/api/deleted-items', 'GET');
+            container.innerHTML = `
+                <div class="section-header"><h2><i class="fas fa-trash-alt"></i> Silinmiş Məlumatlar</h2></div>
+                ${items.length === 0 ? '<div class="empty-state"><i class="fas fa-check-circle"></i><p>Silinmiş məlumat yoxdur</p></div>' : `
+                    <div class="cards-grid">
+                        ${items.map(item => `
+                            <div class="item-card">
+                                <div class="card-body">
+                                    ${item.img ? `<img src="${item.img}" class="cert-image" onerror="this.src='https://placehold.co/600x400?text=No+Image'">` : ''}
+                                    <div class="card-title">
+                                        ${escapeHtml(item.title?.az || item.title || item.text?.az || item.text || '—')}
+                                        <span style="font-size:11px; background:rgba(255,107,157,0.2); padding:2px 8px; border-radius:20px; margin-left:8px;">${item.originalSection}</span>
+                                    </div>
+                                    <div class="card-meta"><span><i class="far fa-clock"></i> ${new Date(item.deletedAt).toLocaleString()}</span></div>
+                                    <div class="card-actions">
+                                        <button class="restore-btn" onclick="restoreItem('${item.originalSection}', '${item.id}')"><i class="fas fa-undo-alt"></i> Bərpa et</button>
+                                        <button class="hard-delete-btn" onclick="hardDeleteItem('${item.originalSection}', '${item.id}')"><i class="fas fa-trash-alt"></i> Tamamilə sil</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `}
+            `;
+        } catch(e) {
+            container.innerHTML = '<div class="empty-state"><p>Xəta baş verdi</p></div>';
+        }
+    }
+
+    async function restoreItem(section, id) {
+        if (!confirm('Məlumatı bərpa etmək istədiyinizə əminsiniz?')) return;
+        
+        showToast('Bərpa edilir...', 'info');
+        try {
+            const response = await apiRequest(`/api/restore/${section}/${id}`, 'POST');
+            if (response.success) {
+                await loadContent();
+                await loadDeletedCount();
+                if (currentSection === 'deleted') {
+                    await renderDeletedItems(document.getElementById('sectionContent'));
+                } else {
+                    renderCurrentSection();
+                }
+                showToast('✅ Məlumat bərpa edildi!', 'success');
+            } else {
+                showToast('❌ Bərpa edilmədi: ' + (response.error || 'unknown'), 'error');
+            }
+        } catch(e) {
+            showToast('❌ Xəta: ' + e.message, 'error');
+        }
+    }
+
+    async function hardDeleteItem(section, id) {
+        if (!confirm('⚠️ Bu məlumat TAMAMİLƏ silinəcək və BİR DAHA BƏRPA OLUNA BİLMƏYƏCƏK! Davam?')) return;
+        
+        try {
+            const response = await apiRequest(`/api/hard-delete/${section}/${id}`, 'DELETE');
+            if (response.success) {
+                await loadContent();
+                await loadDeletedCount();
+                if (currentSection === 'deleted') {
+                    await renderDeletedItems(document.getElementById('sectionContent'));
+                }
+                showToast('🗑️ Məlumat tamamilə silindi!', 'success');
+            }
+        } catch(e) {
+            showToast('❌ Xəta!', 'error');
+        }
+    }
+
+    function openAddModal(section) {
+        currentEditSection = section;
+        editingId = null;
+        showModal(section, null);
+    }
+
+    function openEditModal(section, id) {
+        currentEditSection = section;
+        editingId = id;
+        let item = null;
+        if (section === 'experience') item = contentData.experience.find(i => i.id === id);
+        else if (section === 'education') item = contentData.education.find(i => i.id === id);
+        else if (section === 'projects') item = contentData.projects.find(i => i.id === id);
+        else if (section === 'certificates') item = contentData.certificates.find(i => i.id === id);
+        showModal(section, item);
+    }
+
+    function showModal(section, item) {
+        const modal = document.getElementById('itemModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+        
+        modalTitle.innerText = item ? 'Redaktə et' : 'Yeni əlavə et';
+        
+        let html = `<div class="form-group"><label>ID</label><input type="text" id="itemId" value="${escapeHtml(item?.id || '')}" ${item ? 'readonly' : ''} placeholder="unikal id"></div>`;
+        
+        html += `<div class="lang-box"><h4>AZ - Azərbaycanca</h4>`;
+        html += `<div class="form-group"><label>Başlıq</label><input type="text" id="titleAz" value="${escapeHtml(item?.title?.az || '')}"></div>`;
+        html += `<div class="form-group"><label>Qısa təsvir</label><input type="text" id="shortDescAz" value="${escapeHtml(item?.shortDesc?.az || '')}"></div>`;
+        html += `<div class="form-group"><label>Ətraflı təsvir</label><textarea id="descAz" rows="3">${escapeHtml(item?.modalDesc?.az || item?.desc?.az || '')}</textarea></div></div>`;
+        
+        html += `<div class="lang-box"><h4>EN - English</h4>`;
+        html += `<div class="form-group"><label>Title</label><input type="text" id="titleEn" value="${escapeHtml(item?.title?.en || '')}"></div>`;
+        html += `<div class="form-group"><label>Short description</label><input type="text" id="shortDescEn" value="${escapeHtml(item?.shortDesc?.en || '')}"></div>`;
+        html += `<div class="form-group"><label>Full description</label><textarea id="descEn" rows="3">${escapeHtml(item?.modalDesc?.en || item?.desc?.en || '')}</textarea></div></div>`;
+        
+        html += `<div class="lang-box"><h4>TR - Türkçe</h4>`;
+        html += `<div class="form-group"><label>Başlık</label><input type="text" id="titleTr" value="${escapeHtml(item?.title?.tr || '')}"></div>`;
+        html += `<div class="form-group"><label>Kısa açıklama</label><input type="text" id="shortDescTr" value="${escapeHtml(item?.shortDesc?.tr || '')}"></div>`;
+        html += `<div class="form-group"><label>Detaylı açıklama</label><textarea id="descTr" rows="3">${escapeHtml(item?.modalDesc?.tr || item?.desc?.tr || '')}</textarea></div></div>`;
+        
+        if (section === 'experience' || section === 'education') {
+            html += `<div class="form-group"><label>Period (məs: 2024 - 2025)</label><input type="text" id="period" value="${escapeHtml(item?.period || '')}"></div>`;
+        }
+        if (section === 'projects') {
+            html += `<div class="form-group"><label>Tags (vergüllə)</label><input type="text" id="tags" value="${escapeHtml(item?.tags || '')}"></div>`;
+            html += `<div class="form-group"><label>Link URL</label><input type="url" id="link" value="${escapeHtml(item?.modalLink || '')}"></div>`;
+            html += `<div class="form-group"><label>Şəkil URL</label><input type="text" id="img" value="${escapeHtml(item?.modalImg || '')}"></div>`;
+        }
+        if (section === 'certificates') {
+            html += `
+                <div class="form-group">
+                    <label>Şəkil</label>
+                    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                        ${item?.img ? `<img src="${item.img}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;" id="previewImg" onerror="this.src='https://placehold.co/80x80?text=No+Image'">` : '<div style="width: 80px; height: 80px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center;" id="previewImg"><i class="fas fa-image"></i></div>'}
+                        <input type="file" id="certImage" accept="image/*" style="flex:1">
+                        <input type="hidden" id="img" value="${escapeHtml(item?.img || '')}">
+                        <button type="button" class="edit-btn" onclick="uploadCertificateImage()" style="padding: 8px 16px;">
+                            <i class="fas fa-upload"></i> Yüklə
+                        </button>
+                    </div>
+                    <small style="color: #888; display: block; margin-top: 5px;">JPG, PNG, GIF, WEBP (max 5MB)</small>
+                </div>
+                <div class="form-group"><label>Tags (vergüllə)</label><input type="text" id="tags" value="${escapeHtml(item?.tags || '')}"></div>
+                <div class="form-group"><label>Vurğulanan</label><select id="featured"><option value="true" ${item?.featured ? 'selected' : ''}>Bəli</option><option value="false" ${!item?.featured ? 'selected' : ''}>Xeyr</option></select></div>
+            `;
+        }
+        
+        modalBody.innerHTML = html;
+        modal.style.display = 'flex';
+    }
+
+    async function uploadCertificateImage() {
+        const fileInput = document.getElementById('certImage');
+        const file = fileInput.files[0];
+        
+        if (!file) {
+            showToast('Zəhmət olmasa bir şəkil seçin!', 'error');
+            return;
+        }
+        
+        const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
+        if (!allowedTypes.includes(file.type)) {
+            showToast('Yalnız JPG, PNG, GIF, WEBP formatları dəstəklənir!', 'error');
+            return;
+        }
+        
+        if (file.size > 5 * 1024 * 1024) {
+            showToast('Şəkil ölçüsü 5MB-dan kiçik olmalıdır!', 'error');
+            return;
+        }
+        
+        showToast('Şəkil yüklənir...', 'info');
+        
+        const formData = new FormData();
+        formData.append('image', file);
+        
+        try {
+            const response = await fetch('/api/upload-certificate', {
+                method: 'POST',
+                headers: { 'Authorization': `Bearer ${adminToken}` },
+                body: formData
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                document.getElementById('img').value = data.imageUrl;
+                
+                const previewDiv = document.getElementById('previewImg');
+                if (previewDiv) {
+                    if (previewDiv.tagName === 'IMG') {
+                        previewDiv.src = data.imageUrl;
+                    } else {
+                        previewDiv.innerHTML = `<img src="${data.imageUrl}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;" onerror="this.src='https://placehold.co/80x80?text=Error'">`;
+                    }
+                }
+                
+                showToast('Şəkil uğurla yükləndi!', 'success');
+                fileInput.value = '';
+            } else {
+                showToast(data.error || 'Yükləmə xətası!', 'error');
+            }
+        } catch (error) {
+            console.error('Upload xətası:', error);
+            showToast('Server xətası!', 'error');
+        }
+    }
+
+    function closeModal() {
+        document.getElementById('itemModal').style.display = 'none';
+    }
+
+    async function saveItem() {
+        const id = document.getElementById('itemId')?.value;
+        if (!id) { showToast('ID tələb olunur!', 'error'); return; }
+        
+        const newItem = { id };
+        newItem.title = {
+            az: document.getElementById('titleAz')?.value || '',
+            en: document.getElementById('titleEn')?.value || '',
+            tr: document.getElementById('titleTr')?.value || ''
+        };
+        newItem.shortDesc = {
+            az: document.getElementById('shortDescAz')?.value || '',
+            en: document.getElementById('shortDescEn')?.value || '',
+            tr: document.getElementById('shortDescTr')?.value || ''
+        };
+        newItem.modalDesc = {
+            az: document.getElementById('descAz')?.value || '',
+            en: document.getElementById('descEn')?.value || '',
+            tr: document.getElementById('descTr')?.value || ''
+        };
+        
+        if (currentEditSection === 'experience' || currentEditSection === 'education') {
+            newItem.period = document.getElementById('period')?.value || '';
+        }
+        if (currentEditSection === 'projects') {
+            newItem.tags = document.getElementById('tags')?.value || '';
+            newItem.modalLink = document.getElementById('link')?.value || '';
+            newItem.modalImg = document.getElementById('img')?.value || '';
+        }
+        if (currentEditSection === 'certificates') {
+            newItem.desc = newItem.modalDesc;
+            delete newItem.modalDesc;
+            newItem.tags = document.getElementById('tags')?.value || '';
+            newItem.img = document.getElementById('img')?.value || '';
+            newItem.featured = document.getElementById('featured')?.value === 'true';
+        }
+        
+        try {
+            let response;
+            if (editingId) {
+                response = await apiRequest(`/api/${currentEditSection}/${editingId}`, 'PUT', newItem);
+            } else {
+                response = await apiRequest(`/api/${currentEditSection}`, 'POST', newItem);
+            }
+            if (response.success) {
+                await loadContent();
+                closeModal();
+                showToast('Yadda saxlandı!', 'success');
+            }
+        } catch(e) { showToast('Xəta!', 'error'); }
+    }
+
+    async function deleteItem(section, id) {
+        if (!confirm('Silmək istəyirsiniz?')) return;
+        const response = await apiRequest(`/api/${section}/${id}`, 'DELETE');
+        if (response.success) { await loadContent(); showToast('Silindi!', 'success'); }
+    }
+
+    async function addNewSkill() {
+        const newId = 'skill_' + Date.now();
+        const skillsData = { ...contentData.skills };
+        if (!skillsData.items) skillsData.items = [];
+        skillsData.items.push({ id: newId, text: { az: 'Yeni bacarıq', en: 'New skill', tr: 'Yeni yetenek' } });
+        await apiRequest('/api/skills', 'PUT', skillsData);
+        await loadContent();
+        showToast('Bacarıq əlavə edildi!', 'success');
+    }
+
+    async function updateSkillText(id, newText) {
+        const skillsData = { ...contentData.skills };
+        const idx = skillsData.items.findIndex(s => s.id === id);
+        if (idx !== -1) {
+            skillsData.items[idx].text = { az: newText, en: newText, tr: newText };
+            await apiRequest('/api/skills', 'PUT', skillsData);
+            showToast('Yeniləndi!', 'success');
+        }
+    }
+
+    async function deleteSkill(id) {
+        if (!confirm('Bu bacarığı silmək istəyirsiniz?')) return;
+        await apiRequest(`/api/skills/${id}`, 'DELETE');
+        await loadContent();
+        showToast('Bacarıq silindi!', 'success');
+    }
+
+    async function updateFeaturedCount() {
+        const newCount = parseInt(document.getElementById('featuredCountInput')?.value || 6);
+        const skillsData = { ...contentData.skills, featuredCount: newCount };
+        await apiRequest('/api/skills', 'PUT', skillsData);
+        showToast('Bacarıq sayı yeniləndi!', 'success');
+    }
+
+    async function saveHero() {
+        const heroData = {
+            name: {
+                az: document.getElementById('heroNameAz')?.value || '',
+                en: document.getElementById('heroNameEn')?.value || '',
+                tr: document.getElementById('heroNameTr')?.value || ''
+            },
+            title: {
+                az: document.getElementById('heroTitleAz')?.value || '',
+                en: document.getElementById('heroTitleEn')?.value || '',
+                tr: document.getElementById('heroTitleTr')?.value || ''
+            },
+            intro: {
+                az: document.getElementById('heroIntroAz')?.value || '',
+                en: document.getElementById('heroIntroEn')?.value || '',
+                tr: document.getElementById('heroIntroTr')?.value || ''
+            }
+        };
+        await apiRequest('/api/hero', 'PUT', heroData);
+        showToast('Hero yeniləndi!', 'success');
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return String(str).replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    function showToast(msg, type = 'success') {
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `<i class="fas ${type === 'error' ? 'fa-exclamation-triangle' : 'fa-check-circle'}"></i> ${msg}`;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
+
+    document.querySelectorAll('.nav-tab[data-section]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.nav-tab[data-section]').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentSection = btn.dataset.section;
+            renderCurrentSection();
+        });
+    });
+
+    async function checkAuth() {
+        if (adminToken) {
+            try {
+                const res = await fetch('/api/auth/check', { headers: { 'Authorization': `Bearer ${adminToken}` } });
+                const data = await res.json();
+                if (data.isAdmin) {
+                    document.getElementById('loginPage').style.display = 'none';
+                    document.getElementById('adminPanel').style.display = 'block';
+                    await loadContent();
+                } else {
+                    localStorage.removeItem('adminToken');
+                    adminToken = null;
+                }
+            } catch(e) { localStorage.removeItem('adminToken'); adminToken = null; }
+        }
+    }
+    
+    checkAuth();
+</script>
+</body>
+</html>

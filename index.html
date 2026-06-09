@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="IT Business Analyst, ERP, Portfolio">
+  <meta property="og:title" content="Portfolio">
+  <meta property="og:description" content="">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="img/loglo.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="theme-night">
+
+  <canvas id="fx-canvas" aria-hidden="true"></canvas>
+  <div class="aurora" aria-hidden="true">
+    <span class="aurora-blob aurora-blob--1"></span>
+    <span class="aurora-blob aurora-blob--2"></span>
+    <span class="aurora-blob aurora-blob--3"></span>
+  </div>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+
+  <header id="header" class="site-header">
+    <a href="#hero" class="logo" aria-label="Ana səhifə">H/S</a>
+    <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+    <nav id="nav-menu" class="main-nav" aria-label="Əsas menyu"><ul></ul></nav>
+    <div class="header-tools">
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Gündüz rejimi">
+        <i class="fa-solid fa-moon theme-icon-night" aria-hidden="true"></i>
+        <i class="fa-solid fa-sun theme-icon-day" aria-hidden="true"></i>
+      </button>
+      <div class="lang-dropdown" id="lang-dropdown">
+        <button type="button" class="lang-toggle" id="lang-toggle" aria-expanded="false">
+          <img id="current-flag" src="https://flagcdn.com/az.svg" width="24" height="18" alt="AZ">
+          <!-- <i class="fa-solid fa-chevron-down lang-chevron" aria-hidden="true"></i> -->
+        </button>
+        <ul class="lang-menu" id="lang-menu">
+          <li><button type="button" class="lang-option active" data-lang="az"><img src="https://flagcdn.com/az.svg" width="24" height="18" alt=""><span>AZ</span></button></li>
+          <li><button type="button" class="lang-option" data-lang="tr"><img src="https://flagcdn.com/tr.svg" width="24" height="18" alt=""><span>TR</span></button></li>
+          <li><button type="button" class="lang-option" data-lang="en"><img src="https://flagcdn.com/gb.svg" width="24" height="18" alt=""><span>EN</span></button></li>
+        </ul>
+      </div>
+      <button type="button" class="hamburger" id="hamburger" aria-label="Menyu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section id="hero" class="section hero">
+    <div id="hero-inner"></div>
+    <div class="hero-bg"></div>
+  </section>
+
+  <section id="experience" class="section">
+    <h2 class="section-title"></h2>
+    <div class="timeline" id="experience-list"></div>
+  </section>
+
+  <section id="education" class="section">
+    <h2 class="section-title"></h2>
+    <div class="cards" id="education-list"></div>
+  </section>
+
+  <section id="projects" class="section">
+    <h2 class="section-title"></h2>
+    <div class="cards" id="project-cards"></div>
+  </section>
+
+  <section id="skills" class="section">
+    <h2 class="section-title"></h2>
+    <div class="skills-grid fade-in" id="skills-grid"></div>
+    <div class="center"><button type="button" class="btn secondary" id="more-skills" data-ui="more">Daha çox</button></div>
+  </section>
+
+  <section id="certificates" class="section">
+    <h2 class="section-title"></h2>
+    <div class="cards" id="cert-cards"></div>
+    <div class="center"><button type="button" class="btn secondary" id="more-certs" data-ui="more">Daha çox</button></div>
+  </section>
+
+  <div id="custom-sections"></div>
+
+  <section id="contact" class="section">
+    <h2 class="section-title"></h2>
+    <form class="glass fade-in" id="contact-form">
+      <input type="text" name="name" required data-ui-placeholder="placeholder-name" placeholder="Adınız">
+      <input type="email" name="email" required data-ui-placeholder="placeholder-email" placeholder="Email">
+      <textarea name="message" required data-ui-placeholder="placeholder-message" placeholder="Mesajınız"></textarea>
+      <button type="submit" class="btn primary" data-ui="send">Göndər</button>
+    </form>
+  </section>
+
+  <footer><div id="footer-inner"></div></footer>
+
+  <button type="button" class="back-to-top" id="back-to-top" aria-label="Yuxarı qalx">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <div id="project-modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <span class="close-btn" aria-label="Bağla">&times;</span>
+      <h3 id="modal-title"></h3>
+      <p id="modal-desc"></p>
+      <img id="modal-img" src="" alt="" loading="lazy">
+      <a id="modal-link" href="#" target="_blank" class="btn secondary" data-ui="more">Daha çox</a>
+    </div>
+  </div>
+
+  <div id="skills-modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <span class="close-btn" aria-label="Bağla">&times;</span>
+      <h3></h3>
+      <ul id="skills-list"></ul>
+    </div>
+  </div>
+
+  <div id="cert-modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <span class="close-btn" aria-label="Bağla">&times;</span>
+      <h3 id="cert-title"></h3>
+      <img id="cert-img" src="" alt="">
+      <p id="cert-desc"></p>
+    </div>
+  </div>
+
+  <script src="js/render.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
